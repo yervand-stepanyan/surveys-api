@@ -1,21 +1,33 @@
-const bodyParser = require('body-parser');
-const express = require('express');
-const mongoose = require('mongoose');
+const bodyParser = require('body-parser')
+const cors = require('cors')
+const express = require('express')
 
-const keys = require('./config/variables.config')
+const {MONGO_URI} = require('./config/variables.config')
 
-const app = express();
+const {MongoStorage} = require('./storage')
 
-mongoose.connect(keys.MONGO_URI, {
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useNewUrlParser: true
-}).then(console.log('MongoDB connected'))
-  .catch(error => console.log(error));
+const Api = require('./api')
 
-app.use(require('morgan')('dev'));
+const app = express()
 
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+MongoStorage.init(MONGO_URI).catch(console.error)
 
-module.exports = app;
+app.use(require('morgan')('dev'))
+
+app.use(
+  cors({
+    origin: '*',
+    methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Authorization', 'Content-Type', 'Origin'],
+    credentials: true,
+    optionsSuccessStatus: 200,
+    maxAge: -1
+  })
+)
+
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json())
+
+app.use('/api', Api)
+
+module.exports = app
