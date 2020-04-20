@@ -2,3 +2,5 @@ node_modules
 
 # WebStorm's .idea
 .idea
+
+.env
