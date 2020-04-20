@@ -1,6 +1,8 @@
-node_modules
+# dependencies
+/node_modules
 
 # WebStorm's .idea
 .idea
 
+# .env
 .env
