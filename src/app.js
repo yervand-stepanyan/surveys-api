@@ -17,3 +17,5 @@ app.use(require('morgan')('dev'));
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+module.exports = app;
