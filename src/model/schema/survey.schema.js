@@ -16,7 +16,7 @@ const SurveySchema = new mongoose.Schema({
       },
       answers: [{
         id: {type: String, maxlength: 100},
-        option: {type: String, maxlength: 1000},
+        title: {type: String, maxlength: 1000},
       }],
       startValue: {type: String, maxlength: 100},
       endValue: {type: String, maxlength: 100},
