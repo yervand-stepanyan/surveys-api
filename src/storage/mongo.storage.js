@@ -6,7 +6,7 @@ class MongoStorage {
    * @returns {Promise<void>}
    * @description Initialize Mongo storage.
    */
-  static async init(uri) {
+  static async init (uri) {
     const options = {
       useUnifiedTopology: true,
       useCreateIndex: true,

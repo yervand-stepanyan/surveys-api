@@ -2,9 +2,9 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const express = require('express')
 
-const {MONGO_URI} = require('./config/variables.config')
+const { MONGO_URI } = require('./config/variables.config')
 
-const {MongoStorage} = require('./storage')
+const { MongoStorage } = require('./storage')
 
 const Api = require('./api')
 
@@ -17,7 +17,7 @@ app.use(require('morgan')('dev'))
 app.use(
   cors({
     origin: '*',
-    methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
+    methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Authorization', 'Content-Type', 'Origin'],
     credentials: true,
     optionsSuccessStatus: 200,
@@ -25,7 +25,7 @@ app.use(
   })
 )
 
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 app.use('/api', Api)

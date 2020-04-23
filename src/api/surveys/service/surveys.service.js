@@ -1,4 +1,4 @@
-const {SurveysModel} = require('../../../model')
+const { SurveysModel } = require('../../../model')
 
 class SurveysService {
   /**
@@ -7,7 +7,7 @@ class SurveysService {
    * @param {Function} next
    * @description Get surveys.
    */
-  static async getSurveys(request, response, next) {
+  static async getSurveys (request, response, next) {
     try {
       const surveys = await SurveysModel.getSurveys()
 
