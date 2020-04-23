@@ -20,6 +20,17 @@ class SurveysModel {
   static addSurvey(docs) {
     return SurveysModel.model.create(docs)
   }
+
+  /**
+   * @param {string} id
+   * @returns {Promise<Object>}
+   * @description Delete the survey.
+   */
+  static deleteSurvey (id) {
+    const conditions = { _id: id }
+
+    return SurveysModel.model.deleteOne(conditions)
+  }
 }
 
 SurveysModel.model = mongoose.model('Surveys', SurveySchema)
