@@ -9,7 +9,9 @@ class SurveyAnswersModel {
    */
   static getSurveyAnswers () {
     const conditions = {}
+
     return SurveyAnswersModel.model.find(conditions)
+      .populate("surveyId")
   }
 
   /**
