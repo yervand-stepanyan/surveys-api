@@ -16,7 +16,7 @@ const SurveyAnswerEntrySchema = new mongoose.Schema({
  * @description Define the SurveyAnswer schema.
  */
 const SurveyAnswerSchema = new mongoose.Schema({
-  surveyId: { type: mongoose.Schema.Types.ObjectId, ref: 'Surveys', required: true },
+  survey: { type: mongoose.Schema.Types.ObjectId, ref: 'Surveys', required: true },
   answers: [SurveyAnswerEntrySchema]
 }, { timestamps: true })
 

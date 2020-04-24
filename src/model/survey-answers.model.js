@@ -11,7 +11,7 @@ class SurveyAnswersModel {
     const conditions = {}
 
     return SurveyAnswersModel.model.find(conditions)
-      .populate("surveyId")
+      .populate('survey')
   }
 
   /**
