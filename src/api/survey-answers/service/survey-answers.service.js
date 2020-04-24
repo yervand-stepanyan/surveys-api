@@ -24,10 +24,10 @@ class SurveyAnswersService {
    * @description Add a survey-answer.
    */
   static async addSurveyAnswer (request, response, next) {
-    const { title, questions } = request.body
+    const { surveyId, answers } = request.body
 
     try {
-      const payload = { title, questions }
+      const payload = { surveyId, answers }
       const surveyAnswer = await SurveyAnswersModel.addSurveyAnswer(payload)
 
       return response.json(surveyAnswer)
