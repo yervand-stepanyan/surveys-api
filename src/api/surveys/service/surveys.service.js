@@ -1,4 +1,4 @@
-const { SurveysModel } = require('../../../model')
+const { SurveysModel, SurveyAnswersModel } = require('../../../model')
 
 class SurveysService {
   /**
@@ -46,6 +46,9 @@ class SurveysService {
     const { id } = request.params
 
     try {
+      // Delete survey-answers before deleting the survey.
+      await SurveyAnswersModel.deleteSurveyAnswers(id)
+
       const result = await SurveysModel.deleteSurvey(id)
 
       return response.json(result)
