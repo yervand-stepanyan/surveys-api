@@ -9,6 +9,7 @@ class SurveysModel {
    */
   static getSurveys () {
     const conditions = {}
+
     return SurveysModel.model.find(conditions)
   }
 
